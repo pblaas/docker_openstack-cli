@@ -13,7 +13,7 @@ env OS_USER_DOMAIN_NAME="Default"
 env OS_USERNAME=""
 env OS_PASSWORD=""
 env OS_REGION_NAME="AMS"
-env OS_INTERFACE=public
+env OS_INTERFACE="public"
 env OS_IDENTITY_API_VERSION=3
 
 RUN apk add --no-cache --update \
