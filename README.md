@@ -1,6 +1,6 @@
 #### Audience
 
-This image can be used to spin up a container which contains the OpenStack 3.11.0 CLI tools aswell as Terraform 0.9.8.
+This image can be used to spin up a container which contains the OpenStack CLI tools aswell as the Terraform CLI tool.
 This image contains default values to talk to the [CloudVPS][1] OpenStack environment but these can be overruled by setting new environment settings.
 
 #### Usage:
@@ -26,7 +26,7 @@ OS_USER_DOMAIN_NAME="Default"
 OS_USERNAME=""
 OS_PASSWORD=""
 OS_REGION_NAME="AMS"
-OS_INTERFACE=public
+OS_INTERFACE="public"
 OS_IDENTITY_API_VERSION=3
 ```
 >If you omit the required variables (without default values), the container will prompt for them on startup.
