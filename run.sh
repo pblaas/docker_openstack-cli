@@ -21,6 +21,12 @@ fi
 export OS_TENANT_NAME=$OS_PROJECT_NAME
 export OS_TENANT_ID=$OS_PROJECT_ID
 
+# used for mapping ssh key files.
+if [ -d "/root/.ssh2" ]; then
+	scp -r /root/.ssh2 /root/.ssh
+	chown root:root /root/.ssh
+	chmod -R 0700 /root
+fi	
 
 #fork new shell which contain set variables.
 if [ "$1" ]; then

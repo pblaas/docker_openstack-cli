@@ -1,5 +1,4 @@
 #### Audience
-
 This image can be used to spin up a container which contains the OpenStack CLI tools aswell as the Terraform CLI tool.
 This image contains default values to talk to the [CloudVPS][1] OpenStack environment but these can be overruled by setting new environment settings.
 
@@ -14,7 +13,6 @@ pblaas/openstack-cli
 `Please enter your OpenStack Password:`
 
 #### Available variables:
-
 These variables are available. Only some of them are required as some of them already have default values.
 ```
 OS_AUTH_URL="https://identity.openstack.cloudvps.com/v3"
@@ -41,8 +39,17 @@ docker run -ti \
 pblaas/openstack-cli
 ```
 
-##### Notes
+#### SSH public keys
+You can use the following syntax to  mount  your .ssh directory into the container. .ssh2 is used because we do not want to alter the original files from the container.
+```
+docker run -ti \
+-v ~/.ssh:/root/.ssh2 \
+-e OS_PROJECT_NAME="YOUR-PROJECTNAME" \
+-e OS_USERNAME="your-username" \
+pblaas/openstack-cli
+```
 
+##### Notes
 You need to provide OS_PROJECT_ID environment variable to use cinder and glance.
 
 [1]: https://www.cloudvps.com/ "CloudVPS"
