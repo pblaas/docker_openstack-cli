@@ -28,6 +28,9 @@ if [ -d "/root/.ssh2" ]; then
 	chmod -R 0700 /root
 fi	
 
+#exporting more usefull shell.
+export PS1="\[\033[1;37m\][\$(date +%H%M)][\[\033[1;31m\]\u\[\033[1;37m\]:\w]$\[\033[0m\] "
+
 #fork new shell which contain set variables.
 if [ "$1" ]; then
 	exec ssh-agent /bin/bash -c "$1" 
