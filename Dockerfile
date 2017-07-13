@@ -21,6 +21,7 @@ RUN apk add --no-cache --update \
   bash \
   git \
   curl \
+  coreutils \
   openssh-client \
   openssl \
   python-dev \
