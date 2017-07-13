@@ -29,7 +29,7 @@ if [ -d "/root/.ssh2" ]; then
 fi	
 
 #exporting more usefull shell.
-export PS1="\[\033[1;37m\][\$(date +%H%M)][\[\033[1;31m\]\u\[\033[1;37m\]:\w]$\[\033[0m\] "
+export PS1="\[\033[1;90m\][\$(date +%H%M)]\[\033[1;92m\][\[\033[1;31m\]\u\[\033[1;92m\]:\[\033[1;37m\]\w\[\033[1;92m\]]$\[\033[0m\] "
 
 #fork new shell which contain set variables.
 if [ "$1" ]; then
