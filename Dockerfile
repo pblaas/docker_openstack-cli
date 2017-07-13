@@ -17,6 +17,7 @@ env OS_INTERFACE="public"
 env OS_IDENTITY_API_VERSION=3
 
 RUN apk add --no-cache --update \
+  tzdata \
   bash \
   git \
   curl \
@@ -33,6 +34,9 @@ RUN apk add --no-cache --update \
   && apk del gcc musl-dev linux-headers \
   && rm -rf /var/cache/apk/*
 
+RUN cp /usr/share/zoneinfo/Europe/Amsterdam /etc/localtime \
+  && echo "Europe/Amsterdam" > /etc/timezone \
+  && apk del tzdata
 
 RUN wget https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip \
   && unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip -d /usr/local/bin \
