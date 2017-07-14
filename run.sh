@@ -53,16 +53,17 @@ function typewriter2
     done
 }
 
-
+echo 'export LS_OPTIONS="--color=auto"' > .bashrc
+echo 'alias ls="ls $LS_OPTIONS"' >> .bashrc
 
 #fork new shell which contain set variables.
 if [ "$1" ]; then
 	exec ssh-agent /bin/bash -c "$1" 
 else
-        typewriter2  "The" .1
-	typewriter  " Future " .1
-	typewriter2  "is now" .1
-	typewriter  "!" .1
+        typewriter2  "The" .04
+	typewriter  " Future " .04
+	typewriter2  "is now" .04
+	typewriter  "!" .04
 	echo
-	exec ssh-agent /bin/bash
+	exec ssh-agent /bin/bash --rcfile .bashrc
 fi
