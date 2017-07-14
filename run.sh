@@ -37,7 +37,7 @@ function typewriter
     delay="$2"
 
     for i in $(seq 0 $(expr length "${text}")) ; do
-        echo -ne "\033[1;31m${text:$i:1}\033[1;0m"
+        echo -ne "\033[1;34m${text:$i:1}\033[1;0m"
         sleep ${delay}
     done
 }
@@ -48,7 +48,7 @@ function typewriter2
     delay="$2"
 
     for i in $(seq 0 $(expr length "${text}")) ; do
-        echo -ne "\033[1;32m${text:$i:1}\033[1;0m"
+        echo -ne "\033[1;97m${text:$i:1}\033[1;0m"
         sleep ${delay}
     done
 }
