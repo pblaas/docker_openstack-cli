@@ -31,9 +31,38 @@ fi
 #exporting more usefull shell.
 export PS1="\[\033[1;90m\][\$(date +%H%M)]\[\033[1;92m\][\[\033[1;31m\]\u\[\033[1;92m\]:\[\033[1;37m\]\w\[\033[1;92m\]]$\[\033[0m\] "
 
+function typewriter
+{
+    text="$1"
+    delay="$2"
+
+    for i in $(seq 0 $(expr length "${text}")) ; do
+        echo -ne "\033[1;31m${text:$i:1}\033[1;0m"
+        sleep ${delay}
+    done
+}
+
+function typewriter2
+{
+    text="$1"
+    delay="$2"
+
+    for i in $(seq 0 $(expr length "${text}")) ; do
+        echo -ne "\033[1;32m${text:$i:1}\033[1;0m"
+        sleep ${delay}
+    done
+}
+
+
+
 #fork new shell which contain set variables.
 if [ "$1" ]; then
 	exec ssh-agent /bin/bash -c "$1" 
 else
+        typewriter2  "The" .1
+	typewriter  " Future " .1
+	typewriter2  "is now" .1
+	typewriter  "!" .1
+	echo
 	exec ssh-agent /bin/bash
 fi
