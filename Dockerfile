@@ -2,7 +2,8 @@ FROM alpine:3.6
 
 MAINTAINER Patrick Blaas <patrick@kite4fun.nl>
 
-ARG TERRAFORM_VERSION=0.9.11
+ARG TERRAFORM_VERSION=0.10.0
+ARG HELM_VERSION=2.5.1
 
 env OS_AUTH_URL="https://identity.openstack.cloudvps.com/v3"
 env OS_PROJECT_ID=""
@@ -25,6 +26,7 @@ RUN apk add --no-cache --update \
   perl \
   openssh-client \
   openssl \
+  openssl-dev \
   python-dev \
   py-pip \
   py-setuptools \
@@ -32,7 +34,8 @@ RUN apk add --no-cache --update \
   gcc \
   musl-dev \
   linux-headers \
-  && pip install --upgrade --no-cache-dir pip setuptools python-openstackclient python-heatclient python-neutronclient \
+  libffi-dev \
+  && pip install --upgrade --no-cache-dir pip setuptools python-openstackclient python-heatclient python-neutronclient python-octaviaclient \ 
   && apk del gcc musl-dev linux-headers \
   && rm -rf /var/cache/apk/*
 
@@ -45,6 +48,13 @@ RUN wget https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform
   && rm terraform_${TERRAFORM_VERSION}_linux_amd64.zip
 
 RUN  curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl && chmod +x kubectl && mv kubectl /usr/bin
+
+RUN wget https://kubernetes-helm.storage.googleapis.com/helm-v${HELM_VERSION}-linux-amd64.tar.gz \ 
+  && tar xf helm-v${HELM_VERSION}-linux-amd64.tar.gz \
+  && cp /linux-amd64/helm /usr/local/bin \
+  && chmod +x /usr/local/bin/helm \
+  && rm -rvf linux-amd64 \
+  && rm helm-v${HELM_VERSION}-linux-amd64.tar.gz
 
 
 VOLUME ["/blueprints"]

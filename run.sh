@@ -53,8 +53,8 @@ function typewriter2
     done
 }
 
-echo 'export LS_OPTIONS="--color=auto"' > .bashrc
-echo 'alias ls="ls $LS_OPTIONS"' >> .bashrc
+echo 'export LS_OPTIONS="--color=auto"' > /root/.bashrc
+echo 'alias ls="ls $LS_OPTIONS"' >> /root/.bashrc
 
 #fork new shell which contain set variables.
 if [ "$1" ]; then
@@ -65,5 +65,5 @@ else
 	typewriter2  "is now" .04
 	typewriter  "!" .04
 	echo
-	exec ssh-agent /bin/bash --rcfile .bashrc
+	exec ssh-agent /bin/bash --rcfile /root/.bashrc
 fi
