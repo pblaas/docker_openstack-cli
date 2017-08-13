@@ -22,6 +22,7 @@ RUN apk add --no-cache --update \
   bash \
   git \
   curl \
+  vim \
   coreutils \
   perl \
   openssh-client \
@@ -35,7 +36,7 @@ RUN apk add --no-cache --update \
   musl-dev \
   linux-headers \
   libffi-dev \
-  && pip install --upgrade --no-cache-dir pip setuptools python-openstackclient python-heatclient python-neutronclient python-octaviaclient \ 
+  && pip install --upgrade --no-cache-dir pip jinja2==2.9.5 setuptools python-openstackclient python-heatclient python-neutronclient python-octaviaclient \ 
   && apk del gcc musl-dev linux-headers \
   && rm -rf /var/cache/apk/*
 
