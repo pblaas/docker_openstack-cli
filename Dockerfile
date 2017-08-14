@@ -33,6 +33,7 @@ RUN apk add --no-cache --update \
   py-setuptools \
   ca-certificates \
   gcc \
+  make \
   musl-dev \
   linux-headers \
   libffi-dev \
