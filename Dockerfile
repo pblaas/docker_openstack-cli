@@ -20,6 +20,8 @@ env OS_IDENTITY_API_VERSION=3
 RUN apk add --no-cache --update \
   tzdata \
   bash \
+  zsh \
+  zsh-vcs \
   git \
   curl \
   vim \
@@ -44,6 +46,9 @@ RUN apk add --no-cache --update \
 RUN cp /usr/share/zoneinfo/Europe/Amsterdam /etc/localtime \
   && echo "Europe/Amsterdam" > /etc/timezone \
   && apk del tzdata
+
+ADD install.sh /root/
+RUN sh /root/install.sh && rm -f /root/install.sh && sed -i s/robbyrussell/agnoster/g /root/.zshrc 
 
 RUN wget https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip \
   && unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip -d /usr/local/bin \
