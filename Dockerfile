@@ -35,6 +35,7 @@ RUN apk add --no-cache --update \
   python-dev \
   py-pip \
   py-setuptools \
+  util-linux \
   ca-certificates \
   gcc \
   make \
@@ -51,6 +52,11 @@ RUN cp /usr/share/zoneinfo/Europe/Amsterdam /etc/localtime \
 
 ADD install.sh /root/
 RUN sh /root/install.sh && rm -f /root/install.sh && sed -i s/robbyrussell/agnoster/g /root/.zshrc 
+
+RUN curl -OL https://raw.github.com/nvie/gitflow/develop/contrib/gitflow-installer.sh \
+  && sh gitflow-installer.sh \
+  && rm -f gitflow-installer.sh \
+  && rm -rf gitflow
 
 RUN wget https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip \
   && unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip -d /usr/local/bin \
