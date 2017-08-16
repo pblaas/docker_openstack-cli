@@ -16,12 +16,14 @@ env OS_PASSWORD=""
 env OS_REGION_NAME="AMS"
 env OS_INTERFACE="public"
 env OS_IDENTITY_API_VERSION=3
+env TERM=xterm-256color
 
 RUN apk add --no-cache --update \
   tzdata \
   bash \
   zsh \
   zsh-vcs \
+  less \
   git \
   curl \
   vim \
