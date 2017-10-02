@@ -1,5 +1,5 @@
 #### Audience
-This image can be used to spin up a container which contains the OpenStack CLI tools aswell as the Terraform CLI tool.
+This image can be used to spin up a container which contains the OpenStack CLI tools , Terraform CLI tool and the faas-cli tool.
 This image contains default values to talk to the [CloudVPS][1] OpenStack environment but these can be overruled by setting new environment settings.
 
 #### Usage:
