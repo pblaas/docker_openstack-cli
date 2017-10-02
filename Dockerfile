@@ -71,6 +71,8 @@ RUN wget https://kubernetes-helm.storage.googleapis.com/helm-v${HELM_VERSION}-li
   && rm -rvf linux-amd64 \
   && rm helm-v${HELM_VERSION}-linux-amd64.tar.gz
 
+RUN curl -sSL https://cli.openfaas.com | sh
+
 
 VOLUME ["/blueprints"]
 WORKDIR /blueprints
