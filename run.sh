@@ -25,7 +25,8 @@ export OS_TENANT_ID=$OS_PROJECT_ID
 if [ -d "/root/.ssh2" ]; then
 	scp -r /root/.ssh2 /root/.ssh
 	chown root:root /root/.ssh
-	chmod -R 0700 /root
+	chmod  0700 /root
+	chmod  -R 0600 /root/.ssh
 fi	
 
 #exporting more usefull shell for bash.
