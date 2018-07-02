@@ -43,7 +43,7 @@ RUN apk add --no-cache --update \
   linux-headers \
   libffi-dev \
   docker \
-  && pip install --upgrade --no-cache-dir pip jinja2==2.9.5 setuptools python-openstackclient python-heatclient python-neutronclient python-octaviaclient \ 
+  && pip install --upgrade --no-cache-dir pip jinja2==2.9.5 setuptools python-openstackclient python-heatclient python-neutronclient python-octaviaclient ansible \ 
   && apk del gcc musl-dev linux-headers \
   && rm -rf /var/cache/apk/*
 
