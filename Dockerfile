@@ -45,7 +45,7 @@ RUN apk add --no-cache --update \
   docker \
   ansible \
   && pip install --upgrade pip \
-  && pip install --upgrade --no-cache-dir pip jinja2==2.9.5 setuptools python-openstackclient openstack-interpreter \ 
+  && pip install --upgrade --no-cache-dir pip jinja2==2.9.5 setuptools python-openstackclient python-cinderclient-4.0.1 openstack-interpreter \ 
   && apk del gcc musl-dev linux-headers \
   && rm -rf /var/cache/apk/*
 
