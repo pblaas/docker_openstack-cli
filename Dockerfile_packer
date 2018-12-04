@@ -1,0 +1,65 @@
+FROM alpine:3.7
+
+LABEL maintainer="patrick@kite4fun.nl"
+
+env OS_AUTH_URL="https://identity.openstack.cloudvps.com/v3"
+env OS_PROJECT_ID=""
+env OS_TENANT_ID=""
+env OS_PROJECT_NAME=""
+env OS_TENANT_NAME=""
+env OS_USER_DOMAIN_NAME="Default"
+env OS_USERNAME=""
+env OS_PASSWORD=""
+env OS_REGION_NAME="AMS"
+env OS_INTERFACE="public"
+env OS_IDENTITY_API_VERSION=3
+env TERM=xterm-256color
+
+RUN apk add --no-cache --update \
+  tzdata \
+  bash \
+  zsh \
+  zsh-vcs \
+  less \
+  git \
+  curl \
+  vim \
+  coreutils \
+  perl \
+  openssh-client \
+  openssl \
+  openssl-dev \
+  python-dev \
+  py-pip \
+  py-setuptools \
+  util-linux \
+  ca-certificates \
+  gcc \
+  make \
+  musl-dev \
+  linux-headers \
+  libffi-dev \
+  ansible \
+  && pip install --upgrade --no-cache-dir pip jinja2==2.9.5 setuptools python-openstackclient python-heatclient python-neutronclient python-octaviaclient \ 
+  && apk del gcc musl-dev linux-headers \
+  && rm -rf /var/cache/apk/*
+
+RUN cp /usr/share/zoneinfo/Europe/Amsterdam /etc/localtime \
+  && echo "Europe/Amsterdam" > /etc/timezone \
+  && apk del tzdata
+
+RUN wget https://releases.hashicorp.com/packer/1.2.4/packer_1.2.4_linux_amd64.zip \ 
+  && unzip  packer_1.2.4_linux_amd64.zip \
+  && cp packer /usr/local/bin \
+  && chmod +x /usr/local/bin/packer \
+  && rm -rvf packer_1.2.4_linux_amd64.zip
+
+
+
+VOLUME ["/blueprints"]
+WORKDIR /blueprints
+
+COPY run.sh /usr/local/bin/run.sh
+
+ENTRYPOINT ["/usr/local/bin/run.sh"] 
+
