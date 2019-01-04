@@ -16,8 +16,8 @@ if [ -z "$OS_PROJECT_ID" ]; then
 echo "Please enter your OpenStack Project ID : "
 read -r OS_PROJECT_ID
 export OS_PROJECT_ID=$OS_PROJECT_ID
-export OS_TENANT_ID=$OS_PROJECT_ID
 fi
+
 
 if [ -z "$OS_PASSWORD" ]; then
 echo "Please enter your OpenStack Password: "
@@ -25,6 +25,7 @@ read -sr OS_PASSWORD
 export OS_PASSWORD=$OS_PASSWORD
 fi
 
+export OS_TENANT_ID=$OS_PROJECT_ID
 export OS_TENANT_NAME=$OS_PROJECT_NAME
 
 # used for mapping ssh key files.
