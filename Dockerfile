@@ -49,6 +49,10 @@ RUN apk add --no-cache --update \
   && apk del gcc musl-dev linux-headers \
   && rm -rf /var/cache/apk/*
 
+RUN apk add etcd-ctl --repository=http://dl-cdn.alpinelinux.org/alpine/edge/main \
+  && rm -rf /var/cache/apk/*
+
+
 RUN cp /usr/share/zoneinfo/Europe/Amsterdam /etc/localtime \
   && echo "Europe/Amsterdam" > /etc/timezone \
   && apk del tzdata
