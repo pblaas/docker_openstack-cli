@@ -49,7 +49,7 @@ RUN apk add --no-cache --update \
   && apk del gcc musl-dev linux-headers \
   && rm -rf /var/cache/apk/*
 
-RUN apk add etcd-ctl --repository=http://dl-cdn.alpinelinux.org/alpine/edge/main \
+RUN apk add --no-cache -X http://dl-cdn.alpinelinux.org/alpine/edge/testing etcd-ctl \
   && rm -rf /var/cache/apk/*
 
 
