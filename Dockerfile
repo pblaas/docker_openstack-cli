@@ -65,7 +65,7 @@ RUN curl -OL https://raw.github.com/nvie/gitflow/develop/contrib/gitflow-install
   && rm -f gitflow-installer.sh \
   && rm -rf gitflow
 
-RUN curl https://run.conduit.io/install | bash
+RUN curl -sL https://run.linkerd.io/install | sh
 
 RUN wget https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip \
   && unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip -d /usr/local/bin \

@@ -39,7 +39,8 @@ fi
 export PS1="\[\033[1;90m\][\$(date +%H%M)]\[\033[1;92m\][\[\033[1;31m\]\u\[\033[1;92m\]:\[\033[1;37m\]\w\[\033[1;92m\]]\[\033[33m\]\$(parse_git_branch) \[\033[1;92m\]$\[\033[0m\] "
 
 #exporting updated path
-export PATH=$PATH:/root/.conduit/bin
+export PATH=$PATH:$HOME/.linkerd2/bin
+
 
 function typewriter
 {
