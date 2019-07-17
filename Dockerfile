@@ -2,8 +2,8 @@ FROM alpine:3.9
 
 LABEL maintainer="patrick@kite4fun.nl"
 
-ARG TERRAFORM_VERSION=0.11.14
-ARG HELM_VERSION=2.11.0
+ARG TERRAFORM_VERSION=0.12.0
+ARG HELM_VERSION=2.14.2
 
 env OS_AUTH_URL="https://identity.openstack.cloudvps.com/v3"
 env OS_PROJECT_ID=""
