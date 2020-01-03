@@ -29,7 +29,7 @@ OS_IDENTITY_API_VERSION=3
 ```
 >If you omit the required variables (without default values), the container will prompt for them on startup.
 
-#### Volume 
+#### Volume
 You can use the following syntax to  mount  your terraform projects into the container.
 ```
 docker run -ti \

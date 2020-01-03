@@ -1,4 +1,4 @@
-FROM alpine:3.7
+FROM alpine:3.11.2
 
 LABEL maintainer="patrick@kite4fun.nl"
 
@@ -40,7 +40,7 @@ RUN apk add --no-cache --update \
   linux-headers \
   libffi-dev \
   ansible \
-  && pip install --upgrade --no-cache-dir pip jinja2==2.9.5 setuptools python-openstackclient python-heatclient python-neutronclient python-octaviaclient \ 
+  && pip install --upgrade --no-cache-dir pip jinja2==2.9.5 setuptools python-openstackclient python-heatclient python-neutronclient python-octaviaclient \
   && apk del gcc musl-dev linux-headers \
   && rm -rf /var/cache/apk/*
 
@@ -48,7 +48,7 @@ RUN cp /usr/share/zoneinfo/Europe/Amsterdam /etc/localtime \
   && echo "Europe/Amsterdam" > /etc/timezone \
   && apk del tzdata
 
-RUN wget https://releases.hashicorp.com/packer/1.2.4/packer_1.2.4_linux_amd64.zip \ 
+RUN wget https://releases.hashicorp.com/packer/1.2.4/packer_1.2.4_linux_amd64.zip \
   && unzip  packer_1.2.4_linux_amd64.zip \
   && cp packer /usr/local/bin \
   && chmod +x /usr/local/bin/packer \
@@ -61,5 +61,4 @@ WORKDIR /blueprints
 
 COPY run.sh /usr/local/bin/run.sh
 
-ENTRYPOINT ["/usr/local/bin/run.sh"] 
-
+ENTRYPOINT ["/usr/local/bin/run.sh"]

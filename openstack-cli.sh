@@ -27,4 +27,3 @@ else
 	docker.io/pblaas/openstack-cli:latest
 
 fi
-
