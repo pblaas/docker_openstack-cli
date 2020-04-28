@@ -32,8 +32,9 @@ RUN apk add --no-cache --update \
   openssh-client \
   openssl \
   openssl-dev \
-  python-dev \
-  py-pip \
+  python3-dev \
+  python3 \
+#  py-pip3 \
   py-setuptools \
   util-linux \
   ca-certificates \
@@ -44,8 +45,8 @@ RUN apk add --no-cache --update \
   libffi-dev \
   docker \
   ansible \
-  && pip install --upgrade pip \
-  && pip install --upgrade --no-cache-dir pip jinja2==2.9.5 setuptools python-openstackclient python-cinderclient==4.0.1 openstack-interpreter \
+  && pip3 install --upgrade pip \
+  && pip3 install --upgrade --no-cache-dir pip jinja2==2.9.5 setuptools python-openstackclient python-cinderclient==4.0.1 openstack-interpreter \
   && apk del gcc musl-dev linux-headers \
   && rm -rf /var/cache/apk/*
 
