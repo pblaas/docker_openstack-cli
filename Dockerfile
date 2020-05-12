@@ -1,4 +1,4 @@
-FROM alpine:3.11.5
+FROM alpine:3.11.6
 
 LABEL maintainer="patrick@kite4fun.nl"
 
@@ -34,7 +34,6 @@ RUN apk add --no-cache --update \
   openssl-dev \
   python3-dev \
   python3 \
-#  py-pip3 \
   py-setuptools \
   util-linux \
   ca-certificates \
