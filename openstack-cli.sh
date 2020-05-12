@@ -24,6 +24,6 @@ else
 	-e OS_PROJECT_NAME="$OS_PROJECT_NAME" \
 	-e OS_USERNAME="$OS_USERNAME" \
 	-e OS_PASSWORD="$OS_PASSWORD" \
-	docker.io/pblaas/openstack-cli:latest
+	blackplane/openstack-cli:latest
 
 fi
