@@ -1,9 +1,9 @@
-FROM alpine:3.11.6
+FROM alpine:3.12.0
 
 LABEL maintainer="patrick@kite4fun.nl"
 
-ARG TERRAFORM_VERSION='0.12.24'
-ARG HELM_VERSION='2.16.6'
+ARG TERRAFORM_VERSION='0.13.4'
+ARG HELM_VERSION='3.3.4'
 
 env OS_AUTH_URL="https://identity.openstack.cloudvps.com/v3"
 env OS_PROJECT_ID=""
@@ -34,6 +34,7 @@ RUN apk add --no-cache --update \
   openssl-dev \
   python3-dev \
   python3 \
+  py-pip \
   py-setuptools \
   util-linux \
   ca-certificates \
@@ -73,7 +74,7 @@ RUN wget https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform
 
 RUN  curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl && chmod +x kubectl && mv kubectl /usr/bin
 
-RUN wget https://kubernetes-helm.storage.googleapis.com/helm-v${HELM_VERSION}-linux-amd64.tar.gz \
+RUN wget https://get.helm.sh/helm-v${HELM_VERSION}-linux-amd64.tar.gz \
   && tar xf helm-v${HELM_VERSION}-linux-amd64.tar.gz \
   && cp /linux-amd64/helm /usr/local/bin \
   && chmod +x /usr/local/bin/helm \
