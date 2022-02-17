@@ -1,4 +1,4 @@
-FROM alpine:3.13
+FROM alpine:3
 
 LABEL maintainer="patrick@kite4fun.nl"
 
